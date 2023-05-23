@@ -1,0 +1,84 @@
+
+
+body{
+    background-color: #f4f4f4;
+    min-width: 900px;
+}
+
+.container, .form-box{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+.form-box, .email-box{
+    width: 50%;
+    background-color: #f9f9f9;
+    text-align: left;
+    margin:  auto;
+    padding: 20px 40px;
+
+}
+form{
+    line-height: 40px;
+    font-size: 18px;
+    /* width: 100%; */
+    margin:  auto;
+    padding: 20px;
+}
+form input{
+    width: 50%;
+    font-size: 20px;
+    padding: 8px;
+}
+
+button{
+    font-size: 20px;
+    padding: 8px 15px;
+    margin-top: 20px;
+}
+
+.text-box{
+    margin: 10px 0;
+    line-height: 25px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(92, 92, 248);
+}
+a:hover{
+    color: rgb(4, 4, 196);
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    font-size: 120%;
+}
+
+
+.email-box{
+    width: 80%;
+    background-color: #f9f9f9;
+    text-align: left;
+    margin:  auto;
+    padding: 20px;
+}
+hr{
+    width: 80%;
+    margin: 20px;
+}
+.red, .green{
+    color: red;
+    text-align: center;
+}
+.green {
+    color: green;
+}
