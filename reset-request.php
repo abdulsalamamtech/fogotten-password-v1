@@ -10,7 +10,22 @@ $subject = "";
 $message = "";
 
 
-// if(isset($_POST['submit-reset-password'])){
+if(isset($_POST['submit-reset-password'])){
+
+    include("config.php");
+
+    $user_email = $_POST['email'];
+
+    $data = "SELECT * FROM `my_users` WHERE email = '$user_email';";
+    $result = mysqli_query($conn, $data);
+    $row = mysqli_num_rows($result);
+    if($row !== 1){
+        echo "Reset Error: You dont have an account, you can register with us";
+        echo '<div class="text-box">
+                <script> window.location = "register.php"</script>
+            </div>';
+    }
+
 
 
     $selector = bin2hex(random_bytes(8));
@@ -20,23 +35,16 @@ $message = "";
     $url .= "selector=". $selector;
     $url .= "&token=" . bin2hex($token);
 
-    echo $url;
+    $url;
     brake();
     brake();
+
     // echo date_default_timezone_set("America/New_York");
     // brake();
-    echo date_default_timezone_set("Africa/Lagos");
-    brake();
-    echo $expires = time() + (60 * 2);
-    brake();
-    echo "your token expires in " . date("Y-m-d h:i:sa", $expires);
-    brake();
+    date_default_timezone_set("Africa/Lagos");
+    $expires = time() + (60 * 2);
+    
 
-
-    include("config.php");
-
-    // $user_email = $_POST['email'];
-    $user_email = "ama@gmail.com";
 
     $delete_user_token = "DELETE FROM `password_reset` WHERE `reset_email` = '$user_email';";
     mysqli_query($conn, $delete_user_token);
@@ -47,7 +55,7 @@ $message = "";
     $result = mysqli_query($conn, $insert_user_token);
     if(!$result){
 
-        $error = "<p>There ewas an error: please try again later</p>";
+        $error = "<p>There was an error: please try again later</p>";
     }else{
 
         $headers = "From: amtechdigitalnetworks@gmail.com \r\n";
@@ -72,12 +80,12 @@ $message = "";
         // }
     }
 
-// }
-// else{
-//     echo '<div class="text-box">
-//             <script> window.location = "login.php"</script>
-//         </div>';
-// }
+}
+else{
+    echo '<div class="text-box">
+            <script> window.location = "login.php"</script>
+        </div>';
+}
 
 
 ?>
@@ -110,6 +118,9 @@ $message = "";
                 <?php
                     echo $headers;
                     echo $subject;
+                    $about_token =  "your token expires on: " . date("Y-m-d h:i:sa", $expires);
+                    echo  $about_token;
+                    brake();
                     echo $message;
                 ?>
                 

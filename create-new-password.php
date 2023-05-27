@@ -13,15 +13,6 @@ if(isset($_GET['selector']) AND isset($_GET['token'])){
     $selector = $_GET['selector'];
     $token = $_GET['token'];
 
-    if(empty($selector) OR empty($token)){
-        $error .= "Could not validate your request";
-    }else{
-        if(ctype_xdigit($selector) !== false AND ctype_xdigit($token) !== false ){
-
-        }
-    }
-
-
     // $data = "INSERT INTO `my_users` (`name`, `email`, `password`) 
     //         VALUES('$name','$email','$password');";
     // $result = mysqli_query($conn, $data);
@@ -58,7 +49,9 @@ if(isset($_GET['selector']) AND isset($_GET['token'])){
     <!-- START OF FORM BOX -->
     <div class="form-box">
         <h2>Create a new password!</h2>
+
         <?php
+        // CHECKING FOR THE REQUEST PARAMETER
         if(isset($_GET['selector']) AND isset($_GET['token'])){
 
         $selector = $_GET['selector'];
@@ -84,10 +77,10 @@ if(isset($_GET['selector']) AND isset($_GET['token'])){
             <label for="password">New Password:</label><br>
                 <input type="password" name="password" placeholder="Enter new password" required>
             <br>
-            <label for="con_password">Confirm New Password:</label><br>
-                <input type="password" name="con_password" placeholder="Confirm new password" required>
+            <label for="confirm-password">Confirm New Password:</label><br>
+                <input type="password" name="confirm-password" placeholder="Confirm new password" required>
             <br>
-            <button type="submit" name="submit">Change Password</button>
+            <button type="submit" name="change-password">Change Password</button>
             
         </form>
         <?php
